@@ -37,4 +37,4 @@ The final results are exported as individually segmented tree point clouds in LA
 
 If you use TAIP in your research, please cite the associated publication:
 
-[Publication information to be added.]
+[   ]
