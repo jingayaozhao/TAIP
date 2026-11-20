@@ -725,8 +725,8 @@ def process_single_tree(forest_pts, spatial_index, axis_file, axes_folder,
         axis_dir,
         radius,
         step=0.3,
-        max_length_up=50.0,  # 向上最大延伸50米
-        max_length_down=30.0,  # 向下最大延伸30米
+        max_length_up=50.0,
+        max_length_down=30.0,
         buffer=0.3,
         min_pts=30,
         quality_threshold=0.25
