@@ -215,7 +215,7 @@ for exp_idx, (min_cluster_size, min_samples) in enumerate(param_combinations):
 
     # ========== 处理合并后的轴线簇 ==========
     for idx, cluster_points in enumerate(final_clusters):
-        print(f"\n▶ 处理 tree_{idx}（合并后簇），点数：{cluster_points.shape[0]}")
+        print(f"\n 处理 tree_{idx}（合并后簇），点数：{cluster_points.shape[0]}")
 
         # ========== PCA 垂直性判别 ==========
         pca = PCA(n_components=3)
@@ -254,7 +254,7 @@ for exp_idx, (min_cluster_size, min_samples) in enumerate(param_combinations):
         tree_height = max_corner[2] - min_corner[2]
         tree_heights.append(tree_height)
 
-        print(f"  ✅ 保存完成：tree_{idx}")
+        print(f"  保存完成：tree_{idx}")
 
     print(f"\n处理结束，共输出 {valid_tree_count} 棵有效树")
 
@@ -292,7 +292,7 @@ for exp_idx, (min_cluster_size, min_samples) in enumerate(param_combinations):
     plt.savefig(output_fig_pdf, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
 
-    print(f"\n✅ 可视化图已保存：")
+    print(f"\n 可视化图已保存：")
     print(f"   PNG: {output_fig_png}")
     print(f"   PDF: {output_fig_pdf}")
 
@@ -328,7 +328,7 @@ with open(summary_csv, 'w', newline='', encoding='utf-8') as f:
     for result in experiment_results:
         writer.writerow(result)
 
-print(f"\n✅ 实验汇总表已保存: {summary_csv}")
+print(f"\n 实验汇总表已保存: {summary_csv}")
 
 # 打印汇总表格
 print("\n" + "-" * 100)
