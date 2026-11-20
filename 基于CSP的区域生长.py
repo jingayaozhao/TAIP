@@ -183,7 +183,7 @@ class TreeSegmenter:
 
     def calculate_dbh(self):
         """计算胸径"""
-        # 如果已有缓存的DBH，优先使用
+        
         if 'dbh' in self.progress_data and self.progress_data['dbh']:
             for tree_id_str, dbh_val in self.progress_data['dbh'].items():
                 tree_id = int(tree_id_str)
@@ -191,7 +191,7 @@ class TreeSegmenter:
                     self.dbh[tree_id] = dbh_val
             print("从缓存加载胸径数据")
 
-        # 计算缺失的DBH
+        
         for tree_id, slice_indices in self.trunk_clusters.items():
             if tree_id not in self.dbh:
                 slice_points = self.downsampled_pc[slice_indices][:, :2]
@@ -246,7 +246,7 @@ class TreeSegmenter:
 
     def _compute_single_distance_field(self, tree_id):
         """
-        计算单棵树的距离场（支持缓存）
+        计算单棵树的距离场
         返回: normalized_distances
         """
         # 尝试加载缓存
@@ -269,7 +269,7 @@ class TreeSegmenter:
         return normalized_distances
 
     def _save_single_tree(self, tree_id, point_mask):
-        """保存单棵树的点云（原始点云版本）"""
+        """保存单棵树的点云"""
         if np.sum(point_mask) == 0:
             print(f"    警告：树{tree_id}无匹配点，跳过保存")
             return False
@@ -477,18 +477,18 @@ class TreeSegmenter:
         plt.show()
 
     def run_pipeline(self):
-        """主流程（实时保存版本）"""
+        """主流程"""
         print("=" * 60)
-        print("开始单木分割流程（实时保存版本）")
+        print("开始单木分割流程）")
         print("=" * 60)
 
         # 1. 计算胸径
         self.calculate_dbh()
 
-        # 2. 实时竞争分配并保存（核心改动）
+        # 2. 实时竞争分配并保存
         self.process_and_save_trees_realtime()
 
-        # 3. 可视化（可选）
+        # 3. 可视化
         try:
             self.visualize_saved_trees()
         except Exception as e:
